@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: v2.0.8
+description: starship clusterd agent
+icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
+maintainers:
+- email: huxz01@mingyuanyun.com
+  name: huxz
+name: starship-clusterd-agent
+version: 2.0.8

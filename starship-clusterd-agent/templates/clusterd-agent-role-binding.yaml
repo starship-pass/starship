@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: starship-clusterd-agent-{{ .Release.Name }}
+  labels:
+    starship.mypaas.com.cn/name: starship-clusterd-agent
+subjects:
+- kind: ServiceAccount
+  name: starship-clusterd-agent-admin-{{.Release.Name}}
+  namespace: {{ .Release.Namespace}}
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io

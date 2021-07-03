@@ -1,0 +1,30 @@
+apiVersion: v1
+entries:
+  starship-clusterd-agent:
+  - apiVersion: v2
+    appVersion: v2.0.8
+    created: "2021-07-03T13:55:46.484864247+08:00"
+    description: starship clusterd agent
+    digest: 2373932ee3059d1f3b83e0378345bd4af37a78110d3427e5aa8ac72139bf096d
+    icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
+    maintainers:
+    - email: huxz01@mingyuanyun.com
+      name: huxz
+    name: starship-clusterd-agent
+    urls:
+    - https://starship-pass.github.io/starship/starship-clusterd-agent-2.0.8.tgz
+    version: 2.0.8
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2021-07-03T13:55:46.48455399+08:00"
+    description: starship clusterd agent
+    digest: 66904871d61b34944a3ea480c4d826a4455ac56daf028606367bda4755960425
+    icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
+    maintainers:
+    - email: huxz01@mingyuanyun.com
+      name: huxz
+    name: starship-clusterd-agent
+    urls:
+    - https://starship-pass.github.io/starship/starship-clusterd-agent-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-07-03T13:55:46.484100035+08:00"

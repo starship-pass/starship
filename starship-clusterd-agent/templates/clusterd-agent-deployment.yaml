@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}
+  namespace: {{ .Release.Namespace}}
+  labels:
+    app: starship-clusterd-agent
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: starship-clusterd-agent
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: starship-clusterd-agent
+    spec:
+      serviceAccount: starship-clusterd-agent-admin-{{.Release.Name}}
+      initContainers:
+      - name: verify
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+        env:
+        - name: aliyun_logs_container-log
+          value: "stdout"
+        - name: aliyun_logs_container-log_tags
+          value: "app=clusterd-agent#{{ .Release.Name}}"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: DEPLOYMENT_NAME
+          value: {{ .Values.deployment}}
+        - name: CLUSTER_CODE
+          value: {{ .Values.arguments.cluster }}
+        - name: CONTAINERS_NAME
+          value: clusterd-agent
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}
+        - name: CHART_VERSION
+          value: {{ .Chart.Version}}
+
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: {{ .Values.command }}
+        args:
+          - agent
+          - --verify
+          - --hub-host={{ index .Values.arguments "hub-host"  }}
+          - --hub-http={{ index .Values.arguments "hub-http" }}
+          - --token={{ .Values.arguments.token }}
+      containers:
+      - name: clusterd-agent
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8019
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+        env:
+          - name: aliyun_logs_container-log
+            value: "stdout"
+          - name: aliyun_logs_container-log_tags
+            value: "app=clusterd-agent#{{ .Release.Name}}"
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                 fieldPath: metadata.name       
+          - name: DEPLOYMENT_NAME
+            value: {{ .Values.deployment}}
+          - name: CLUSTER_CODE
+            value: {{ .Values.arguments.cluster }}
+          - name: CONTAINERS_NAME
+            value: clusterd-agent
+          - name: RELEASE_NAME
+            value: {{.Release.Name}}
+          - name: CHART_VERSION
+            value: {{ .Chart.Version}}
+        readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            tcpSocket:
+              port: 8019
+            timeoutSeconds: 1
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: {{ .Values.command }}
+        args:
+{{- range $key, $value := .Values.arguments }}
+        {{- if $value }}
+        - --{{ $key }}={{ $value }}
+        {{- else }}
+        - {{ $key }}
+        {{- end }}
+{{- end }}
+      restartPolicy: Always

@@ -1,0 +1,17 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+## starship starship-clusterd-agent image version
+## ref: https://registry-chart.mypaas.com.cn
+##
+image:
+  registry: docker-prod-registry.cn-hangzhou.cr.aliyuncs.com
+  repository: cloudnative/clusterd
+  tag: "20210527125638"
+  pullPolicy: Always
+arguments: 
+  agent:
+  hub-host: https://starship-hub.mypaas.com.cn/
+  hub-http: https://starship.mypaas.com.cn/hubapi
+  token: 
+command: '["myapp","--log-level=warn"]'
+replicaCount: 1
