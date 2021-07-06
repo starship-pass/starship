@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   starship-clusterd-agent:
   - apiVersion: v1
-    appVersion: 1.0.2
-    created: "2021-07-06T12:28:03.874782886+08:00"
+    appVersion: 2.0.9
+    created: "2021-07-06T17:25:15.344444725+08:00"
     description: starship clusterd agent
-    digest: 7dc1839f8e7b8186ed325c8e4b511e760b73f76f10a3c537768b1bf024498c39
+    digest: 034c2a7b3e7f2c0d8d07df0cf26b4177770f891845d5225a5a2a318f1a144df5
     icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
     maintainers:
     - email: huxz01@mingyuanyun.com
@@ -14,36 +14,6 @@ entries:
     sources:
     - https://starship-pass.github.io/starship/starship-clusterd-agent
     urls:
-    - https://starship-pass.github.io/starship/starship-clusterd-agent-1.0.2.tgz
-    version: 1.0.2
-  - apiVersion: v1
-    appVersion: 1.0.1
-    created: "2021-07-06T12:28:03.874575518+08:00"
-    description: starship clusterd agent
-    digest: c2985a196a1458f8c01046215bbd45f53d32ede40cd36f27cc25cfd3b9aac46b
-    icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
-    maintainers:
-    - email: huxz01@mingyuanyun.com
-      name: huxz
-    name: starship-clusterd-agent
-    sources:
-    - https://starship-pass.github.io/starship/starship-clusterd-agent
-    urls:
-    - https://starship-pass.github.io/starship/starship-clusterd-agent-1.0.1.tgz
-    version: 1.0.1
-  - apiVersion: v1
-    appVersion: 1.0.0
-    created: "2021-07-06T12:28:03.874321962+08:00"
-    description: starship clusterd agent
-    digest: 1415d1cda5f510f36d17bf116a59cfd58363fcb8692cfa791afdff48eb2c07f2
-    icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
-    maintainers:
-    - email: huxz01@mingyuanyun.com
-      name: huxz
-    name: starship-clusterd-agent
-    sources:
-    - https://starship-pass.github.io/starship/starship-clusterd-agent
-    urls:
-    - https://starship-pass.github.io/starship/starship-clusterd-agent-1.0.0.tgz
-    version: 1.0.0
-generated: "2021-07-06T12:28:03.873929485+08:00"
+    - https://starship-pass.github.io/starship/starship-clusterd-agent-2.0.9.tgz
+    version: 2.0.9
+generated: "2021-07-06T17:25:15.344108934+08:00"

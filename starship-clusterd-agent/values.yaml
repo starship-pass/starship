@@ -6,7 +6,7 @@
 image:
   registry: docker-prod-registry.cn-hangzhou.cr.aliyuncs.com
   repository: cloudnative/clusterd
-  tag: "20210702112039_T1"
+  tag: "20210706151839_R1"
   pullPolicy: Always
 arguments: 
   agent:
