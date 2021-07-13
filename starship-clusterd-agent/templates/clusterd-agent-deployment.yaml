@@ -11,9 +11,6 @@ spec:
     matchLabels:
       app: starship-clusterd-agent
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
     type: Recreate
   template:
     metadata:
